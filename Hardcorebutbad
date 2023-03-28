@@ -1,0 +1,1208 @@
+firesignal(game:GetService("ReplicatedStorage").EntityInfo.Caption.OnClientEvent, 'Hardcore started',true,2)
+wait(1)
+firesignal(game:GetService("ReplicatedStorage").EntityInfo.Caption.OnClientEvent, 'Credits to Depth for Making Hardcore Doors',true,1)
+-- Custom Door Sounds
+loadstring(game:HttpGet("https://pastebin.com/raw/iAhTGdBh"))()
+loadstring(game:HttpGet("https://pastebin.com/raw/6brG9uma"))()
+
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+
+-- Rebound
+coroutine.wrap(function()
+    while true do
+        wait(math.random(20,550))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+if workspace:FindFirstChild("SeekMoving") == nil and game:GetService("ReplicatedStorage").GameData.LatestRoom.Value ~= 50 then
+        wait(1.5)
+local part = Instance.new("Part")
+part.Name = "Bound"
+part.Parent = workspace
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(61, 171, 98)
+game.Lighting.MainColorCorrection.Contrast = 0.9
+game.Lighting.MainColorCorrection.Saturation = -2
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5), {Contrast = 0}):Play()
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5), {Saturation = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
+local cue1 = Instance.new("Sound")
+cue1.Parent = game.Workspace
+cue1.Name = "Scream"
+cue1.SoundId = "rbxassetid://9114397505"
+local distort = Instance.new("DistortionSoundEffect")
+distort.Parent = cue1
+distort.Level = 1
+local distort2 = Instance.new("DistortionSoundEffect")
+distort2.Parent = cue1
+distort2.Level = 1
+local pitch = Instance.new("PitchShiftSoundEffect")
+pitch.Parent = cue1
+pitch.Octave = 0.5
+local pitch2 = Instance.new("PitchShiftSoundEffect")
+pitch2.Parent = cue1
+pitch2.Octave = 0.5
+local pitch3 = Instance.new("PitchShiftSoundEffect")
+pitch3.Parent = cue1
+pitch3.Octave = 0.5
+cue1.Volume = 0.1
+cue1:Play()
+local cue2 = Instance.new("Sound")
+cue2.Parent = game.Workspace
+cue2.Name = "Spawn"
+cue2.SoundId = "rbxassetid://9114221327"
+cue2.Volume = 3
+cue2:Play()
+local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local camara = game.Workspace.CurrentCamera
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+	camara.CFrame = camara.CFrame * shakeCf
+end)
+camShake:Start()
+camShake:ShakeOnce(10,3,0.1,6,2,0.5)
+local speed = math.random(60,350)
+local delay = {"2", "2.5", "1.5", "1", "2.1"}
+local fuck = delay[math.random(1, #delay)]
+wait(2.8)
+
+function GetGitSound(GithubSnd,SoundName)
+	local url=GithubSnd
+	if not isfile(SoundName..".mp3") then
+		writefile(SoundName..".mp3", game:HttpGet(url))
+	end
+	local sound=Instance.new("Sound")
+	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
+	return sound
+end
+
+local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/check78/Endless-Doors-In-Doors/main/Rebound.lua"))()
+
+-- Create entity
+
+local entity = Creator.createEntity({
+    CustomName = "Rebound", -- Custom name of your entity
+    Model = "rbxassetid://12254145022", -- Can be GitHub file or rbxassetid
+    Speed = speed, -- Percentage, 100 = default Rush speed
+    DelayTime = fuck, -- Time before starting cycles (seconds)
+    HeightOffset = 0.3,
+    CanKill = true,
+    BreakLights = false,
+    KillRange = 20,
+    BackwardsMovement = true,
+    FlickerLights = {
+        false, -- Enabled
+        2.5, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 1,
+        Max = 1
+    },
+    CamShake = {
+        true, -- Enabled
+        {5, 15, 0.1, 1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
+    },
+    Jumpscare = {
+        false, -- Enabled ('false' if you don't want jumpscare)
+        {
+            Image1 = "https://www.roblox.com/library/11862656491", -- Image1 url
+            Image2 = "https://www.roblox.com/library/11862656491", -- Image2 url
+            Shake = false,
+            Sound1 = {
+                0, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Sound2 = {
+                5567523008, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Flashing = {
+                true, -- Enabled
+                Color3.fromRGB(6, 38, 135), -- Color
+            },
+            Tease = {
+                false, -- Enabled ('false' if you don't want tease)
+                Min = 1,
+                Max = 3,
+            },
+        },
+    },
+    CustomDialog = {"w"}, -- Custom death message (can be as long as you want)
+})
+
+-----[[ Advanced ]]-----
+
+entity.Debug.OnEntityEnteredRoom = function(room)
+    print("Entity:", entity, "has entered room:", room)
+end
+
+entity.Debug.OnEntitySpawned = function(entityModel)
+    print("Entity has spawned:", entityModel)
+local bruh = workspace.Rebound.RushNew
+local TweenService = game:GetService("TweenService")
+local spawn = Instance.new("Sound")
+spawn.Parent = bruh
+spawn.Name = "ReboundSpawn"
+spawn.SoundId = "rbxassetid://9114221327"
+spawn.Volume = 5
+spawn.RollOffMaxDistance = 10000
+spawn.RollOffMinDistance = 450
+spawn:Play()
+    local move = GetGitSound("https://github.com/check78/worldcuuuup/blob/main/DoomBegin.mp3?raw=true","Reboun")
+    move.Parent = bruh
+    move.Name = "ReboundMoving"
+    move.Volume = 0
+    move.Looped = true
+local vroom = TweenService:Create(move, TweenInfo.new(2),{Volume = 0.2})
+    local distort = Instance.new("DistortionSoundEffect")
+    distort.Level = 0.75
+    distort.Parent = move
+	move.RollOffMaxDistance = 2000
+	move.RollOffMinDistance = 100
+    local tree = Instance.new("TremoloSoundEffect")
+    tree.Depth = 1
+    tree.Duty = 1
+    tree.Frequency = 5
+    tree.Parent = move
+    local eq = Instance.new("EqualizerSoundEffect")
+    eq.HighGain = -60
+    eq.MidGain = 10
+    eq.LowGain = 10
+    eq.Parent = move
+	wait(1)
+    vroom:Play()
+	move:Play()
+end
+
+entity.Debug.OnEntityDespawned = function(entityModel)
+    print("Entity has despawned:", entityModel)
+    cue1:Destroy()
+    cue2:Destroy()
+end
+
+entity.Debug.OnEntityStartMoving = function(entityModel)
+    print("Entity has started moving:", entityModel)
+end
+
+entity.Debug.OnEntityFinishedRebound = function(entityModel)
+    print("Entity finished rebound:", entityModel)
+end
+
+entity.Debug.OnDeath = function()
+    warn("You died.")
+    print("fuck.")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/check78/Jumpscares/main/ReboundJumpscare.txt"))()
+end
+
+------------------------
+
+-- Run the created entity
+Creator.runEntity(entity)
+
+local randomnumber = math.random(3,5)
+print(randomnumber)
+
+for i = 3,randomnumber do
+	game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+wait(math.random(1,4))
+
+function GetGitSound(GithubSnd,SoundName)
+	local url=GithubSnd
+	if not isfile(SoundName..".mp3") then
+		writefile(SoundName..".mp3", game:HttpGet(url))
+	end
+	local sound=Instance.new("Sound")
+	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
+	return sound
+end
+
+local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/check78/Endless-Doors-In-Doors/main/Rebound.lua"))()
+
+-- Create entity
+
+local entity = Creator.createEntity({
+    CustomName = "Rebound", -- Custom name of your entity
+    Model = "rbxassetid://12254145022", -- Can be GitHub file or rbxassetid
+    Speed = speed, -- Percentage, 100 = default Rush speed
+    DelayTime = fuck, -- Time before starting cycles (seconds)
+    HeightOffset = 0.3,
+    CanKill = true,
+    BreakLights = false,
+    KillRange = 20,
+    BackwardsMovement = true,
+    FlickerLights = {
+        false, -- Enabled
+        2.5, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 1,
+        Max = 1
+    },
+    CamShake = {
+        true, -- Enabled
+        {5, 15, 0.1, 1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
+    },
+    Jumpscare = {
+        false, -- Enabled ('false' if you don't want jumpscare)
+        {
+            Image1 = "https://www.roblox.com/library/11862656491", -- Image1 url
+            Image2 = "https://www.roblox.com/library/11862656491", -- Image2 url
+            Shake = false,
+            Sound1 = {
+                0, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Sound2 = {
+                5567523008, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Flashing = {
+                true, -- Enabled
+                Color3.fromRGB(6, 38, 135), -- Color
+            },
+            Tease = {
+                false, -- Enabled ('false' if you don't want tease)
+                Min = 1,
+                Max = 3,
+            },
+        },
+    },
+    CustomDialog = {"w"}, -- Custom death message (can be as long as you want)
+})
+
+-----[[ Advanced ]]-----
+
+entity.Debug.OnEntityEnteredRoom = function(room)
+    print("Entity:", entity, "has entered room:", room)
+end
+
+entity.Debug.OnEntitySpawned = function(entityModel)
+    print("Entity has spawned:", entityModel)
+local bruh = workspace.Rebound.RushNew
+local TweenService = game:GetService("TweenService")
+local spawn = Instance.new("Sound")
+spawn.Parent = bruh
+spawn.Name = "ReboundSpawn"
+spawn.SoundId = "rbxassetid://9114221327"
+spawn.Volume = 5
+spawn.RollOffMaxDistance = 10000
+spawn.RollOffMinDistance = 450
+spawn:Play()
+    local move = GetGitSound("https://github.com/check78/worldcuuuup/blob/main/DoomBegin.mp3?raw=true","Reboun")
+    move.Parent = bruh
+    move.Name = "ReboundMoving"
+    move.Volume = 0
+    move.Looped = true
+local vroom = TweenService:Create(move, TweenInfo.new(2),{Volume = 0.2})
+    local distort = Instance.new("DistortionSoundEffect")
+    distort.Level = 0.75
+    distort.Parent = move
+	move.RollOffMaxDistance = 2000
+	move.RollOffMinDistance = 100
+    local tree = Instance.new("TremoloSoundEffect")
+    tree.Depth = 1
+    tree.Duty = 1
+    tree.Frequency = 5
+    tree.Parent = move
+    local eq = Instance.new("EqualizerSoundEffect")
+    eq.HighGain = -60
+    eq.MidGain = 10
+    eq.LowGain = 10
+    eq.Parent = move
+	wait(1)
+    vroom:Play()
+	move:Play()
+end
+
+entity.Debug.OnEntityDespawned = function(entityModel)
+    print("Entity has despawned:", entityModel)
+end
+
+entity.Debug.OnEntityStartMoving = function(entityModel)
+    print("Entity has started moving:", entityModel)
+end
+
+entity.Debug.OnEntityFinishedRebound = function(entityModel)
+    print("Entity finished rebound:", entityModel)
+end
+
+entity.Debug.OnDeath = function()
+    warn("You died.")
+    print("fuck.")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/check78/Jumpscares/main/ReboundJumpscare.txt"))()
+end
+
+------------------------
+
+-- Run the created entity
+Creator.runEntity(entity)
+end
+print("fuck.")
+part:Destroy()
+end
+    end
+end)()
+
+-- shocker
+coroutine.wrap(function()
+    while true do
+        wait(math.random(55,250))
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+wait(0.5)
+if workspace:FindFirstChild("SeekMoving") == nil and game:GetService("ReplicatedStorage").GameData.LatestRoom.Value ~= 50 then
+loadstring(game:HttpGet("https://pastebin.com/raw/EXBrTvRn"))()
+end
+    end
+end)()
+
+-- Matcher Mimic
+coroutine.wrap(function()
+    while true do
+        wait(math.random(105,250))
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+workspace.Mimic.MatchMimic1:Destroy()
+workspace.Mimic.roast:Destroy()
+wait(0.35)
+if workspace:FindFirstChild("Matcher") == nil and workspace:FindFirstChild("RushMoving") == nil and workspace:FindFirstChild("Bound") == nil and workspace:FindFirstChild("AmbushMoving") == nil and game:GetService("ReplicatedStorage").GameData.LatestRoom.Value ~= 50 then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/check78/Entities/main/MatchMimic.txt"))()
+end
+    end
+end)()
+
+-- Rebound Mimic
+coroutine.wrap(function()
+    while true do
+        wait(math.random(155,650))
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+workspace.Mimic.BoundMimic1:Destroy()
+wait(1.55)
+if workspace:FindFirstChild("Matcher") == nil and workspace:FindFirstChild("RushMoving") == nil and workspace:FindFirstChild("Bound") == nil and workspace:FindFirstChild("AmbushMoving") == nil and game:GetService("ReplicatedStorage").GameData.LatestRoom.Value ~= 50 then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/check78/Entities/main/BoundMimic.txt"))()
+end
+    end
+end)()
+
+-- Ripper
+coroutine.wrap(function()
+    while true do
+        wait(math.random(30,150))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(0.3)
+if workspace:FindFirstChild("SeekMoving") == nil and game:GetService("ReplicatedStorage").GameData.LatestRoom.Value ~= 50 then
+loadstring(game:HttpGet("https://pastebin.com/raw/fUeGEiS0"))()
+end
+    end
+end)()
+
+-- Deer God
+coroutine.wrap(function()
+    while true do
+        wait(math.random(100,750))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        if workspace:FindFirstChild("SeekMoving") == nil and game:GetService("ReplicatedStorage").GameData.LatestRoom.Value ~= 50 then
+        local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+
+
+-- Create entity
+local entityTable = Spawner.createEntity({
+    CustomName = "Deer God", -- Custom name of your entity
+    Model = "rbxassetid://11393625763", -- Can be GitHub file or rbxassetid
+    Speed = 185, -- Percentage, 100 = default Rush speed
+    DelayTime = 2, -- Time before starting cycles (seconds)
+    HeightOffset = 0,
+    CanKill = true,
+    KillRange = 50,
+    BackwardsMovement = false,
+    BreakLights = true,
+    FlickerLights = {
+        true, -- Enabled/Disabled
+        1, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 1,
+        Max = 1,
+        WaitTime = 2,
+    },
+    CamShake = {
+        true, -- Enabled/Disabled
+        {3.5, 20, 0.1, 1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
+    },
+    Jumpscare = {
+        true, -- Enabled/Disabled
+        {
+            Image1 = "rbxassetid://https://11287256504/", -- Image1 url
+            Image2 = "rbxassetid://https://12209846418/", -- Image2 url
+            Shake = true,
+            Sound1 = {
+                10483790459, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Sound2 = {
+                10483837590, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Flashing = {
+                true, -- Enabled/Disabled
+                Color3.fromRGB(255, 255, 255), -- Color
+            },
+            Tease = {
+                true, -- Enabled/Disabled
+                Min = 1,
+                Max = 3,
+            },
+        },
+    },
+    CustomDialog = {"You can", "put your", "custom death", "message here."}, -- Custom death message
+})
+
+
+-----[[  Debug -=- Advanced  ]]-----
+entityTable.Debug.OnEntitySpawned = function()
+    print("Entity has spawned:", entityTable)
+end
+
+entityTable.Debug.OnEntityDespawned = function()
+    print("Entity has despawned:", entityTable)
+end
+
+entityTable.Debug.OnEntityStartMoving = function()
+    print("Entity has started moving:", entityTable)
+end
+
+entityTable.Debug.OnEntityFinishedRebound = function()
+    print("Entity has finished rebound:", entityTable)
+end
+
+entityTable.Debug.OnEntityEnteredRoom = function(room)
+    print("Entity:", entityTable, "has entered room:", room)
+end
+
+entityTable.Debug.OnLookAtEntity = function()
+    print("Player has looked at entity:", entityTable)
+end
+
+entityTable.Debug.OnDeath = function()
+    warn("Player has died.")
+end
+------------------------------------
+
+
+-- Run the created entity
+Spawner.runEntity(entityTable)
+        end
+    end
+end)()
+
+-- Silence
+coroutine.wrap(function()
+    while true do
+        wait(math.random(5,3500))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        loadstring(game:HttpGet("https://pastebin.com/raw/BUQw7eJQ"))()
+    end
+end)()
+
+-- Rebound
+coroutine.wrap(function()
+    while true do
+        wait(math.random(160,860))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        if workspace:FindFirstChild("SeekMoving") == nil and game:GetService("ReplicatedStorage").GameData.LatestRoom.Value ~= 50 then
+        local part = Instance.new("Part")
+part.Name = "Bound"
+part.Parent = workspace
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(61, 171, 98)
+game.Lighting.MainColorCorrection.Contrast = 0.2
+game.Lighting.MainColorCorrection.Saturation = -0.7
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5), {Contrast = 0}):Play()
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5), {Saturation = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
+local cue1 = Instance.new("Sound")
+cue1.Parent = game.Workspace
+cue1.Name = "Scream"
+cue1.SoundId = "rbxassetid://9114397505"
+local distort = Instance.new("DistortionSoundEffect")
+distort.Parent = cue1
+distort.Level = 1
+local distort2 = Instance.new("DistortionSoundEffect")
+distort2.Parent = cue1
+distort2.Level = 1
+local pitch = Instance.new("PitchShiftSoundEffect")
+pitch.Parent = cue1
+pitch.Octave = 0.5
+local pitch2 = Instance.new("PitchShiftSoundEffect")
+pitch2.Parent = cue1
+pitch2.Octave = 0.5
+local pitch3 = Instance.new("PitchShiftSoundEffect")
+pitch3.Parent = cue1
+pitch3.Octave = 0.5
+cue1.Volume = 0.1
+cue1:Play()
+local cue2 = Instance.new("Sound")
+cue2.Parent = game.Workspace
+cue2.Name = "Spawn"
+cue2.SoundId = "rbxassetid://9114221327"
+cue2.Volume = 3
+cue2:Play()
+local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local camara = game.Workspace.CurrentCamera
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+	camara.CFrame = camara.CFrame * shakeCf
+end)
+camShake:Start()
+camShake:ShakeOnce(10,3,0.1,6,2,0.5)
+local speed = math.random(60,350)
+local delay = {"2", "2.5", "1.5", "1", "2.1"}
+local fuck = delay[math.random(1, #delay)]
+wait(2.8)
+
+function GetGitSound(GithubSnd,SoundName)
+	local url=GithubSnd
+	if not isfile(SoundName..".mp3") then
+		writefile(SoundName..".mp3", game:HttpGet(url))
+	end
+	local sound=Instance.new("Sound")
+	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
+	return sound
+end
+
+local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/check78/Endless-Doors-In-Doors/main/Rebound.lua"))()
+
+-- Create entity
+
+local entity = Creator.createEntity({
+    CustomName = "Rebound", -- Custom name of your entity
+    Model = "rbxassetid://12254145022", -- Can be GitHub file or rbxassetid
+    Speed = speed, -- Percentage, 100 = default Rush speed
+    DelayTime = fuck, -- Time before starting cycles (seconds)
+    HeightOffset = 0.3,
+    CanKill = true,
+    BreakLights = false,
+    KillRange = 20,
+    BackwardsMovement = true,
+    FlickerLights = {
+        false, -- Enabled
+        2.5, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 1,
+        Max = 1
+    },
+    CamShake = {
+        true, -- Enabled
+        {5, 15, 0.1, 1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
+    },
+    Jumpscare = {
+        false, -- Enabled ('false' if you don't want jumpscare)
+        {
+            Image1 = "https://www.roblox.com/library/11862656491", -- Image1 url
+            Image2 = "https://www.roblox.com/library/11862656491", -- Image2 url
+            Shake = false,
+            Sound1 = {
+                0, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Sound2 = {
+                5567523008, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Flashing = {
+                true, -- Enabled
+                Color3.fromRGB(6, 38, 135), -- Color
+            },
+            Tease = {
+                false, -- Enabled ('false' if you don't want tease)
+                Min = 1,
+                Max = 3,
+            },
+        },
+    },
+    CustomDialog = {"w"}, -- Custom death message (can be as long as you want)
+})
+
+-----[[ Advanced ]]-----
+
+entity.Debug.OnEntityEnteredRoom = function(room)
+    print("Entity:", entity, "has entered room:", room)
+end
+
+entity.Debug.OnEntitySpawned = function(entityModel)
+    print("Entity has spawned:", entityModel)
+local bruh = workspace.Rebound.RushNew
+local TweenService = game:GetService("TweenService")
+local spawn = Instance.new("Sound")
+spawn.Parent = bruh
+spawn.Name = "ReboundSpawn"
+spawn.SoundId = "rbxassetid://9114221327"
+spawn.Volume = 5
+spawn.RollOffMaxDistance = 10000
+spawn.RollOffMinDistance = 450
+spawn:Play()
+    local move = GetGitSound("https://github.com/check78/worldcuuuup/blob/main/DoomBegin.mp3?raw=true","Reboun")
+    move.Parent = bruh
+    move.Name = "ReboundMoving"
+    move.Volume = 0
+    move.Looped = true
+local vroom = TweenService:Create(move, TweenInfo.new(2),{Volume = 0.2})
+    local distort = Instance.new("DistortionSoundEffect")
+    distort.Level = 0.75
+    distort.Parent = move
+	move.RollOffMaxDistance = 2000
+	move.RollOffMinDistance = 100
+    local tree = Instance.new("TremoloSoundEffect")
+    tree.Depth = 1
+    tree.Duty = 1
+    tree.Frequency = 5
+    tree.Parent = move
+    local eq = Instance.new("EqualizerSoundEffect")
+    eq.HighGain = -60
+    eq.MidGain = 10
+    eq.LowGain = 10
+    eq.Parent = move
+	wait(1)
+    vroom:Play()
+	move:Play()
+end
+
+entity.Debug.OnEntityDespawned = function(entityModel)
+    print("Entity has despawned:", entityModel)
+    cue1:Destroy()
+    cue2:Destroy()
+end
+
+entity.Debug.OnEntityStartMoving = function(entityModel)
+    print("Entity has started moving:", entityModel)
+end
+
+entity.Debug.OnEntityFinishedRebound = function(entityModel)
+    print("Entity finished rebound:", entityModel)
+end
+
+entity.Debug.OnDeath = function()
+    warn("You died.")
+    print("fuck.")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/check78/Jumpscares/main/ReboundJumpscare.txt"))()
+end
+
+------------------------
+
+-- Run the created entity
+Creator.runEntity(entity)
+
+local randomnumber = math.random(3,5)
+print(randomnumber)
+
+for i = 3,randomnumber do
+	game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+wait(math.random(1,4))
+
+function GetGitSound(GithubSnd,SoundName)
+	local url=GithubSnd
+	if not isfile(SoundName..".mp3") then
+		writefile(SoundName..".mp3", game:HttpGet(url))
+	end
+	local sound=Instance.new("Sound")
+	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
+	return sound
+end
+
+local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/check78/Endless-Doors-In-Doors/main/Rebound.lua"))()
+
+-- Create entity
+
+local entity = Creator.createEntity({
+    CustomName = "Rebound", -- Custom name of your entity
+    Model = "rbxassetid://12254145022", -- Can be GitHub file or rbxassetid
+    Speed = speed, -- Percentage, 100 = default Rush speed
+    DelayTime = fuck, -- Time before starting cycles (seconds)
+    HeightOffset = 0.3,
+    CanKill = true,
+    BreakLights = false,
+    KillRange = 20,
+    BackwardsMovement = true,
+    FlickerLights = {
+        false, -- Enabled
+        2.5, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 1,
+        Max = 1
+    },
+    CamShake = {
+        true, -- Enabled
+        {5, 15, 0.1, 1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
+    },
+    Jumpscare = {
+        false, -- Enabled ('false' if you don't want jumpscare)
+        {
+            Image1 = "https://www.roblox.com/library/11862656491", -- Image1 url
+            Image2 = "https://www.roblox.com/library/11862656491", -- Image2 url
+            Shake = false,
+            Sound1 = {
+                0, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Sound2 = {
+                5567523008, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Flashing = {
+                true, -- Enabled
+                Color3.fromRGB(6, 38, 135), -- Color
+            },
+            Tease = {
+                false, -- Enabled ('false' if you don't want tease)
+                Min = 1,
+                Max = 3,
+            },
+        },
+    },
+    CustomDialog = {"w"}, -- Custom death message (can be as long as you want)
+})
+
+-----[[ Advanced ]]-----
+
+entity.Debug.OnEntityEnteredRoom = function(room)
+    print("Entity:", entity, "has entered room:", room)
+end
+
+entity.Debug.OnEntitySpawned = function(entityModel)
+    print("Entity has spawned:", entityModel)
+local bruh = workspace.Rebound.RushNew
+local TweenService = game:GetService("TweenService")
+local spawn = Instance.new("Sound")
+spawn.Parent = bruh
+spawn.Name = "ReboundSpawn"
+spawn.SoundId = "rbxassetid://9114221327"
+spawn.Volume = 5
+spawn.RollOffMaxDistance = 10000
+spawn.RollOffMinDistance = 450
+spawn:Play()
+    local move = GetGitSound("https://github.com/check78/worldcuuuup/blob/main/DoomBegin.mp3?raw=true","Reboun")
+    move.Parent = bruh
+    move.Name = "ReboundMoving"
+    move.Volume = 0
+    move.Looped = true
+local vroom = TweenService:Create(move, TweenInfo.new(2),{Volume = 0.2})
+    local distort = Instance.new("DistortionSoundEffect")
+    distort.Level = 0.75
+    distort.Parent = move
+	move.RollOffMaxDistance = 2000
+	move.RollOffMinDistance = 100
+    local tree = Instance.new("TremoloSoundEffect")
+    tree.Depth = 1
+    tree.Duty = 1
+    tree.Frequency = 5
+    tree.Parent = move
+    local eq = Instance.new("EqualizerSoundEffect")
+    eq.HighGain = -60
+    eq.MidGain = 10
+    eq.LowGain = 10
+    eq.Parent = move
+	wait(1)
+    vroom:Play()
+	move:Play()
+end
+
+entity.Debug.OnEntityDespawned = function(entityModel)
+    print("Entity has despawned:", entityModel)
+end
+
+entity.Debug.OnEntityStartMoving = function(entityModel)
+    print("Entity has started moving:", entityModel)
+end
+
+entity.Debug.OnEntityFinishedRebound = function(entityModel)
+    print("Entity finished rebound:", entityModel)
+end
+
+entity.Debug.OnDeath = function()
+    warn("You died.")
+    print("fuck.")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/check78/Jumpscares/main/ReboundJumpscare.txt"))()
+end
+
+------------------------
+
+-- Run the created entity
+Creator.runEntity(entity)
+end
+print("fuck.")
+part:Destroy()
+        end
+    end
+end)()
+
+-- A-60
+coroutine.wrap(function()
+    while true do
+        wait(math.random(60,250))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        if workspace:FindFirstChild("SeekMoving") == nil and game:GetService("ReplicatedStorage").GameData.LatestRoom.Value ~= 50 then
+        local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+
+
+-- Create entity
+local entityTable = Spawner.createEntity({
+    CustomName = "A-60", -- Custom name of your entity
+    Model = "rbxassetid://11573495258", -- Can be GitHub file or rbxassetid
+    Speed = 200, -- Percentage, 100 = default Rush speed
+    DelayTime = 2, -- Time before starting cycles (seconds)
+    HeightOffset = 0,
+    CanKill = true,
+    KillRange = 50,
+    BackwardsMovement = false,
+    BreakLights = true,
+    FlickerLights = {
+        true, -- Enabled/Disabled
+        1, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 1,
+        Max = 4,
+        WaitTime = 10,
+    },
+    CamShake = {
+        true, -- Enabled/Disabled
+        {1000.5, 20, 0.1, 1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
+    },
+    Jumpscare = {
+        false, -- Enabled/Disabled
+        {
+            Image1 = "rbxassetid://10483855823", -- Image1 url
+            Image2 = "rbxassetid://10483999903", -- Image2 url
+            Shake = true,
+            Sound1 = {
+                10483790459, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Sound2 = {
+                10483837590, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Flashing = {
+                true, -- Enabled/Disabled
+                Color3.fromRGB(255, 255, 255), -- Color
+            },
+            Tease = {
+                true, -- Enabled/Disabled
+                Min = 1,
+                Max = 3,
+            },
+        },
+    },
+    CustomDialog = {"You can", "put your", "custom death", "message here."}, -- Custom death message
+})
+
+
+-----[[  Debug -=- Advanced  ]]-----
+entityTable.Debug.OnEntitySpawned = function()
+    print("Entity has spawned:", entityTable)
+end
+
+entityTable.Debug.OnEntityDespawned = function()
+    print("Entity has despawned:", entityTable)
+end
+
+entityTable.Debug.OnEntityStartMoving = function()
+    print("Entity has started moving:", entityTable)
+end
+
+entityTable.Debug.OnEntityFinishedRebound = function()
+    print("Entity has finished rebound:", entityTable)
+end
+
+entityTable.Debug.OnEntityEnteredRoom = function(room)
+    print("Entity:", entityTable, "has entered room:", room)
+end
+
+entityTable.Debug.OnLookAtEntity = function()
+    print("Player has looked at entity:", entityTable)
+end
+
+entityTable.Debug.OnDeath = function()
+    warn("Player has died.")
+end
+------------------------------------
+
+
+-- Run the created entity
+Spawner.runEntity(entityTable)
+        end
+    end
+end)()
+
+
+-- No Overseer in Lever Room
+ workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Assets.ChildAdded:Connect(function(eye)
+	if eye.Name == "LeverForGate" then
+		wait(0.6)
+        workspace.Overseer:Destroy()
+	else
+
+	end
+end)
+
+-- No Overseer in Seek Chase
+workspace.ChildAdded:Connect(function(seek)
+	if seek.Name == "SeekMoving" then
+		wait(0.6)
+        workspace.Overseer:Destroy()
+	else
+
+	end
+end)
+
+-- No Overseer and Normal Eyes Combo
+workspace.ChildAdded:Connect(function(seek)
+	if seek.Name == "Eyes" then
+		wait(0.6)
+        workspace.Overseer:Destroy()
+	else
+
+	end
+end)
+-- sprint
+local Parent = game.Players.LocalPlayer.PlayerGui
+
+local Sprint = Instance.new("Frame")
+local ImageLabel = Instance.new("ImageLabel")
+local UICorner = Instance.new("UICorner")
+local UIPadding = Instance.new("UIPadding")
+local Bar = Instance.new("Frame")
+local UICorner_2 = Instance.new("UICorner")
+local UIPadding_2 = Instance.new("UIPadding")
+local Fill = Instance.new("Frame")
+local UICorner_3 = Instance.new("UICorner")
+
+--Properties:
+
+local StaminaGui = Instance.new("ScreenGui")
+
+--Properties:
+
+StaminaGui.Name = "StaminaGui"
+StaminaGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+StaminaGui.Enabled = true
+StaminaGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Sprint.Name = "Sprint"
+Sprint.Parent = StaminaGui
+Sprint.AnchorPoint = Vector2.new(0, 1)
+Sprint.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Sprint.BackgroundTransparency = 1.000
+Sprint.Position = UDim2.new(0.931555569, 0, 0.987179458, 0)
+Sprint.Size = UDim2.new(0.0556001104, 0, 0.0756410286, 0)
+Sprint.SizeConstraint = Enum.SizeConstraint.RelativeYY
+Sprint.ZIndex = 1005
+
+ImageLabel.Parent = Sprint
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 222, 189)
+ImageLabel.Size = UDim2.new(1, 0, 1, 0)
+ImageLabel.SizeConstraint = Enum.SizeConstraint.RelativeYY
+ImageLabel.Visible = false
+
+UICorner.CornerRadius = UDim.new(1, 0)
+UICorner.Parent = ImageLabel
+
+UIPadding.Parent = Sprint
+UIPadding.PaddingBottom = UDim.new(0.300000012, -5)
+UIPadding.PaddingLeft = UDim.new(0.0199999996, 0)
+UIPadding.PaddingRight = UDim.new(0.0500000007, -15)
+UIPadding.PaddingTop = UDim.new(0.300000012, -5)
+
+Bar.Name = "Bar"
+Bar.Parent = Sprint
+Bar.AnchorPoint = Vector2.new(0, 0.5)
+Bar.BackgroundColor3 = Color3.fromRGB(56, 46, 39)
+Bar.BackgroundTransparency = 0.700
+Bar.Position = UDim2.new(-2.72600269, 0, 0.499999672, 0)
+Bar.Size = UDim2.new(3.60599804, 0, 0.600000083, 0)
+Bar.ZIndex = 0
+
+UICorner_2.CornerRadius = UDim.new(0.25, 0)
+UICorner_2.Parent = Bar
+
+UIPadding_2.Parent = Bar
+UIPadding_2.PaddingBottom = UDim.new(0, 4)
+UIPadding_2.PaddingLeft = UDim.new(0, 4)
+UIPadding_2.PaddingRight = UDim.new(0, 4)
+UIPadding_2.PaddingTop = UDim.new(0, 4)
+
+Fill.Name = "Fill"
+Fill.Parent = Bar
+Fill.AnchorPoint = Vector2.new(0, 0.5)
+Fill.BackgroundColor3 = Color3.fromRGB(213, 185, 158)
+Fill.Position = UDim2.new(0, 0, 0.5, 0)
+Fill.Size = UDim2.new(1, 0, 1, 0)
+Fill.ZIndex = 2
+
+UICorner_3.CornerRadius = UDim.new(0.25, 0)
+UICorner_3.Parent = Fill
+
+local erm = Instance.new("ScreenGui")
+local ImageLabel = Instance.new("ImageLabel")
+erm.IgnoreGuiInset = true
+erm.Name = "erm"
+erm.Parent = Parent
+erm.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ImageLabel.Parent = erm
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.BackgroundTransparency = 1.000
+ImageLabel.Size = UDim2.new(1, 0, 0.998717964, 0)
+ImageLabel.Image = "rbxassetid://190596490"
+ImageLabel.ImageColor3 = Color3.fromRGB(0, 0, 0)
+
+ImageLabel.ImageTransparency = 1
+
+-- Services
+
+local Players = game:GetService("Players")
+local UIS = game:GetService("UserInputService")
+
+-- Variables
+
+local Plr = Players.LocalPlayer
+local Char = Plr.Character or Plr.CharacterAdded:Wait()
+local Hum = Char:WaitForChild("Humanoid")
+
+local stamina, staminaMax = 100, 100
+local sprintTime = 7
+local cooldown = false
+
+local ModuleScripts = {
+	MainGame = require(Plr.PlayerGui.MainUI.Initiator.Main_Game),
+}
+
+-- Setup
+
+local nIdx; nIdx = hookmetamethod(game, "__newindex", newcclosure(function(t, k, v)
+	if k == "WalkSpeed" then
+		if ModuleScripts.MainGame.chase then
+			v = ModuleScripts.MainGame.crouching and 15 or 22
+		elseif ModuleScripts.MainGame.crouching then
+			v = 8
+		else
+			v = isSprinting and 20 or 12
+		end
+	end
+
+	return nIdx(t, k, v)
+end))
+
+-- Scripts
+
+sprintTime = math.max(sprintTime - 1, 1)
+local zerostamtween = game.TweenService:Create(ImageLabel,TweenInfo.new(12),{ImageTransparency = 0})
+UIS.InputBegan:Connect(function(key, gameProcessed)
+	if not gameProcessed and key.KeyCode == Enum.KeyCode.Q and not cooldown and not ModuleScripts.MainGame.crouching then
+		-- Sprinting
+
+		isSprinting = true
+		Hum:SetAttribute("SpeedBoost",4)
+		zerostamtween:Play()
+		while UIS:IsKeyDown(Enum.KeyCode.Q) and stamina > 0 do
+			stamina = math.max(stamina - 1, 0)
+			Fill.Size = UDim2.new(1 / staminaMax * stamina, 1, 1, 0)
+			task.wait(sprintTime / 100)
+			
+		end
+
+		-- Reset
+		zerostamtween:Pause()
+		isSprinting = false
+		Hum:SetAttribute("SpeedBoost",0)
+		game.TweenService:Create(ImageLabel,TweenInfo.new(1),{ImageTransparency = 1}):Play()
+		Hum.WalkSpeed = 12
+
+		if stamina == 0 then
+			-- Cooldown
+			firesignal(game.ReplicatedStorage.Bricks.Caption.OnClientEvent,"You're exhausted.")
+			local noStamernaSound = Instance.new("Sound",workspace)
+			noStamernaSound.SoundId = "rbxassetid://8258601891"
+			noStamernaSound.Volume = 0.8
+			noStamernaSound.PlayOnRemove = true
+			noStamernaSound:Destroy()
+			cooldown = true
+			game.TweenService:Create(ImageLabel,TweenInfo.new(0.3),{ImageTransparency = 0}):Play()
+			wait(0.3)
+			game.TweenService:Create(ImageLabel,TweenInfo.new(10),{ImageTransparency = 1}):Play()
+			for i = 1, staminaMax, 1 do
+				stamina = i
+				Fill.Size = UDim2.new(1 / staminaMax * i, 1, 1, 0)
+
+				task.wait(sprintTime / 50)
+			end
+
+			cooldown = false
+		else
+			-- Refill
+			cooldown = false
+			Spawn(function()
+			    --wait(1)
+			    cooldown = false
+			end)
+			game.TweenService:Create(ImageLabel,TweenInfo.new(1),{ImageTransparency = 1}):Play()
+			while not UIS:IsKeyDown(Enum.KeyCode.Q) do
+				stamina = math.min(stamina + 1, staminaMax)
+				Fill.Size = UDim2.new(1 / staminaMax * stamina, 1, 1, 0)
+
+				task.wait(sprintTime / 50)
+			end
+		end        
+	end
+end)
+Hum:SetAttribute("SpeedBoost",0)
+Hum.WalkSpeed = 12
+
+    local roast = Instance.new("Sound")
+    roast.Parent = workspace
+    roast.Name = "Omg"
+    roast.SoundId = "rbxassetid://4835664238"
+    roast.Volume = 1
+    roast.Pitch = 1
+    roast.TimePosition = 0.2
+    roast:Play()
+local a = game.Players.LocalPlayer.PlayerGui.MainUI
+a.Dialogue.TextScaled = false
+a.Dialogue.TextWrapped = false
+a.Dialogue.Visible = true
+a.Dialogue.TextColor3 = Color3.fromRGB(213, 247, 210)
+a.Dialogue.TextTransparency = 1
+a.Dialogue.Glow.Visible = true
+a.Dialogue.Glow.ImageColor3 = Color3.fromRGB(30, 170, 144)
+a.Dialogue.Glow.ImageTransparency = 1
+a.Dialogue.Text = "Credits to Depth"
+a.Dialogue.TextSize = 100
+a.Dialogue.Glow.Size = UDim2.new(2, 0, 2, 0)
+game.TweenService:Create(a.Dialogue,TweenInfo.new(0.7),{TextTransparency = 0}):Play()
+game.TweenService:Create(a.Dialogue.Glow,TweenInfo.new(0.7),{ImageTransparency = 0}):Play()
+wait(1.5)
+game.TweenService:Create(a.Dialogue,TweenInfo.new(0.7),{TextTransparency = 1}):Play()
+game.TweenService:Create(a.Dialogue.Glow,TweenInfo.new(0.7),{ImageTransparency = 1}):Play()
+wait(0.5)
+game.TweenService:Create(a.Dialogue,TweenInfo.new(0.7),{TextTransparency = 0}):Play()
+game.TweenService:Create(a.Dialogue.Glow,TweenInfo.new(0.7),{ImageTransparency = 0}):Play()
+a.Dialogue.Text = "Nautic,"
+wait(1.5)
+game.TweenService:Create(a.Dialogue,TweenInfo.new(0.7),{TextTransparency = 1}):Play()
+game.TweenService:Create(a.Dialogue.Glow,TweenInfo.new(0.7),{ImageTransparency = 1}):Play()
+wait(0.5)
+game.TweenService:Create(a.Dialogue,TweenInfo.new(0.7),{TextTransparency = 0}):Play()
+game.TweenService:Create(a.Dialogue.Glow,TweenInfo.new(0.7),{ImageTransparency = 0}):Play()
+a.Dialogue.Text = "[Hardcore but bad]"
+wait(1.5)
+game.TweenService:Create(a.Dialogue,TweenInfo.new(0.7),{TextTransparency = 1}):Play()
+game.TweenService:Create(a.Dialogue.Glow,TweenInfo.new(0.7),{ImageTransparency = 1}):Play()
+local Sounds = Instance.new("Folder")
+Sounds.Name = "Mimic"
+Sounds.Parent = พื้นที่ทำงาน
